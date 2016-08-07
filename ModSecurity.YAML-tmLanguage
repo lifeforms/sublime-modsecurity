@@ -1,0 +1,95 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: ModSecurity
+scopeName: source.modsecurity
+fileTypes: [conf]
+uuid: b3e060ed-6a2e-4986-8f65-a5283c5a6a33
+
+patterns:
+
+- comment: Comment, e.g. "# ..."
+  name: comment.modsecurity
+  match: '#.*'
+
+- comment: SecMarker directive - with simple string parameter
+  name: complex.modsecurity.secmarker
+  match: ^\s*(SecMarker)\s+("([\w\s:\.\-_/]+)"|([\w\s:\.\-_/]+))
+  captures:
+    '1': {name: keyword.other.modsecurity.directive}
+    '3': {name: string.quoted.modsecurity.marker}
+    '4': {name: string.quoted.modsecurity.marker}
+
+- comment: Directives
+  name: keyword.other.modsecurity.directive
+  match: '^\s*(SecAction|SecArgumentSeparator|SecAuditEngine|SecAuditLog|SecAuditLog2|SecAuditLogDirMode|SecAuditLogFormat|SecAuditLogFileMode|SecAuditLogParts|SecAuditLogRelevantStatus|SecAuditLogStorageDir|SecAuditLogType|SecCacheTransformations|SecChrootDir|SecCollectionTimeout|SecComponentSignature|SecConnEngine|SecContentInjection|SecCookieFormat|SecCookieV0Separator|SecDataDir|SecDebugLog|SecDebugLogLevel|SecDefaultAction|SecDisableBackendCompression|SecHashEngine|SecHashKey|SecHashParam|SecHashMethodRx|SecHashMethodPm|SecGeoLookupDb|SecGsbLookupDb|SecGuardianLog|SecHttpBlKey|SecInterceptOnError|SecMarker|SecPcreMatchLimit|SecPcreMatchLimitRecursion|SecPdfProtect|SecPdfProtectMethod|SecPdfProtectSecret|SecPdfProtectTimeout|SecPdfProtectTokenName|SecReadStateLimit|SecConnReadStateLimit|SecSensorId|SecWriteStateLimit|SecConnWriteStateLimit|SecRemoteRules|SecRemoteRulesFailAction|SecRequestBodyAccess|SecRequestBodyInMemoryLimit|SecRequestBodyLimit|SecRequestBodyNoFilesLimit|SecRequestBodyLimitAction|SecResponseBodyLimit|SecResponseBodyLimitAction|SecResponseBodyMimeType|SecResponseBodyMimeTypesClear|SecResponseBodyAccess|SecRule|SecRuleInheritance|SecRuleEngine|SecRulePerfTime|SecRuleRemoveById|SecRuleRemoveByMsg|SecRuleRemoveByTag|SecRuleScript|SecRuleUpdateActionById|SecRuleUpdateTargetById|SecRuleUpdateTargetByMsg|SecRuleUpdateTargetByTag|SecServerSignature|SecStatusEngine|SecStreamInBodyInspection|SecStreamOutBodyInspection|SecTmpDir|SecUnicodeMapFile|SecUnicodeCodePage|SecUploadDir|SecUploadFileLimit|SecUploadFileMode|SecUploadKeepFiles|SecWebAppId|SecXmlExternalEntity)\b'
+
+- comment: Bare variables, e.g. ARGS, TX:PARANOIA_LEVEL, XML:/*
+  name: variable.parameter.modsecurity
+  match: '(?i)!?\b(XML|WEBSERVER_ERROR_LOG|WEBAPPID|USERAGENT_IP|USERID|URLENCODED_ERROR|UNIQUE_ID|TX|TIME_YEAR|TIME_WDAY|TIME_SEC|TIME_MON|TIME_MIN|TIME_HOUR|TIME_EPOCH|TIME_DAY|TIME|STREAM_OUTPUT_BODY|STREAM_INPUT_BODY|SESSIONID|SESSION|SERVER_PORT|SERVER_NAME|SERVER_ADDR|SDBM_DELETE_ERROR|SCRIPT_USERNAME|SCRIPT_UID|SCRIPT_MODE|SCRIPT_GROUPNAME|SCRIPT_GID|SCRIPT_FILENAME|SCRIPT_BASENAME|RULE|RESPONSE_STATUS|RESPONSE_PROTOCOL|RESPONSE_HEADERS_NAMES|RESPONSE_HEADERS|RESPONSE_CONTENT_TYPE|RESPONSE_CONTENT_LENGTH|RESPONSE_BODY|REQUEST_URI_RAW|REQUEST_URI|REQUEST_PROTOCOL|REQUEST_METHOD|REQUEST_LINE|REQUEST_HEADERS_NAMES|REQUEST_HEADERS|REQUEST_FILENAME|REQUEST_COOKIES_NAMES|REQUEST_COOKIES|REQUEST_BODY_LENGTH|REQUEST_BODY|REQUEST_BASENAME|REQBODY_PROCESSOR|REQBODY_ERROR_MSG|REQBODY_ERROR|REMOTE_USER|REMOTE_PORT|REMOTE_HOST|REMOTE_ADDR|QUERY_STRING|PERF_SWRITE|PERF_SREAD|PERF_RULES|PERF_PHASE5|PERF_PHASE4|PERF_PHASE3|PERF_PHASE2|PERF_PHASE1|PERF_LOGGING|PERF_GC|PERF_COMBINED|PATH_INFO|OUTBOUND_DATA_ERROR|MULTIPART_UNMATCHED_BOUNDARY|MULTIPART_STRICT_ERROR|MULTIPART_NAME|MULTIPART_FILENAME|MULTIPART_CRLF_LF_LINES|MODSEC_BUILD|MATCHED_VARS_NAMES|MATCHED_VAR_NAME|MATCHED_VARS|MATCHED_VAR|INBOUND_DATA_ERROR|HIGHEST_SEVERITY|GEO|FILES_TMP_CONTENT|FILES_TMPNAMES|FILES_SIZES|FULL_REQUEST_LENGTH|FULL_REQUEST|FILES_NAMES|FILES_COMBINED_SIZE|FILES|ENV|DURATION|AUTH_TYPE|ARGS_POST_NAMES|ARGS_POST|ARGS_NAMES|ARGS_GET_NAMES|ARGS_GET|ARGS_COMBINED_SIZE|ARGS)([:\.][A-Za-z0-9/\-_\[\]\*]+)?'
+
+- comment: Macro expanded variables, e.g. %{tx.0}
+  name: keyword.macro.modsecurity
+  match: \%\{([^\}]*)\}
+  captures:
+    '1': {name: variable.parameter.modsecurity}
+
+- comment: Rule action - runtime configuration, e.g. ctl:auditLogParts
+  name: keyword.other.modsecurity.action.ctl
+  match: '(^|,|\"|\s)ctl:(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)'
+
+- comment: Rule action - transform, e.g. t:base64Decode
+  name: keyword.operator.modsecurity.action.transform
+  match: '(^|,|\"|\s)t:(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecode|urlDecodeUni|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)'
+
+- comment: Rule action - with simple number parameter
+  name: complex.modsecurity.action.with_parameter.number
+  match: (^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+))
+  captures:
+    '2': {name: keyword.other.modsecurity.action}
+    '4': {name: constant.numeric.modsecurity.action.parameter}
+    '5': {name: constant.numeric.modsecurity.action.parameter}
+
+- comment: Rule action - with simple string parameter
+  name: complex.modsecurity.action.with_parameter.string
+  match: (^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))
+  captures:
+    '2': {name: keyword.other.modsecurity.action}
+    '4': {name: string.quoted.modsecurity.action_parameter}
+    '5': {name: string.quoted.modsecurity.action_parameter}
+
+- comment: Rule action - with other parameter
+  name: complex.modsecurity.action.with_parameter.other
+  match: '(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):'
+  captures:
+    '2': {name: keyword.other.modsecurity.action}
+
+- comment: Rule action - without parameters
+  name: keyword.other.modsecurity.action
+  match: '(^|,|\"|\s)(allow|auditlog|block|capture|chain|deny|drop|log|multiMatch|noauditlog|nolog|pass)'
+
+- comment: Regexp operator and operand, e.g. "@rx foo"
+  name: complex.modsecurity.operator_operand.rx
+  match: '"(@rx)\s+([^"]*)'
+  captures:
+    '1': {name: keyword.operator.modsecurity}
+    '2': {name: string.regexp.modsecurity}
+
+- comment: pm operator and operand, e.g. "@pm foo"
+  name: complex.modsecurity.operator_operand.pm
+  match: '"(@pm)\s+([^"]*)'
+  captures:
+    '1': {name: keyword.operator.modsecurity}
+    '2': {name: string.unquoted.modsecurity}
+
+- comment: Operator, e.g. @contains
+  name: keyword.operator.modsecurity
+  match: '@(beginsWith|contains|containsWord|detectSQLi|detectXSS|endsWith|fuzzyHash|eq|ge|geoLookup|gsbLookup|gt|inspectFile|ipMatch|ipMatchF|ipMatchFromFile|le|lt|pmf|pmFromFile|rbl|rsub|streq|strmatch|validateByteRange|validateDTD|validateHash|validateSchema|validateUrlEncoding|validateUtf8Encoding|verifyCC|verifyCPF|verifySSN|within)\b'
+
+- comment: Numbers, e.g. rule ids
+  name: constant.numeric.modsecurity
+  match: \b\d+(\.\d+)?
+
+- comment: severities
+  name: constant.language.modsecurity.severity
+  match: \b(CRITICAL|ERROR|WARNING|NOTICE)\b
+  # TODO: these are not matching in strings
