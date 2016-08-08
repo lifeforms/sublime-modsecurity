@@ -1,4 +1,4 @@
-# ModSecurity rule syntax for [Sublime Text](https://www.sublimetext.com) (work in progress)
+# ModSecurity rule syntax for [Sublime Text](https://www.sublimetext.com)
 
 ## Instructions
 
