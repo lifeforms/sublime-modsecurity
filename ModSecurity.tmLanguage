@@ -105,12 +105,25 @@
 			<string>complex.modsecurity.action.ctl</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.modsecurity.action.transform</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.modsecurity.action.transform.name</string>
+				</dict>
+			</dict>
 			<key>comment</key>
 			<string>Rule action - transform, e.g. t:base64Decode</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)t:(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecodeUni|urlDecode|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)</string>
+			<string>(?i)(^|,|\"|\s)(t:)(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecodeUni|urlDecode|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)</string>
 			<key>name</key>
-			<string>keyword.operator.modsecurity.action.transform</string>
+			<string>complex.modsecurity.action.transform</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -158,19 +171,27 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Rule action - with unrecognized parameter</string>
+			<string>Rule action - with unmatched parameter</string>
 			<key>match</key>
 			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.with_parameter.other</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.modsecurity.action</string>
+				</dict>
+			</dict>
 			<key>comment</key>
 			<string>Rule action - without parameters</string>
 			<key>match</key>
 			<string>(?i)(^|,|\"|\s)(allow|auditlog|block|capture|chain|deny|drop|log|multiMatch|noauditlog|nolog|pass)</string>
 			<key>name</key>
-			<string>keyword.other.modsecurity.action</string>
+			<string>complex.modsecurity.action.without_parameter</string>
 		</dict>
 		<dict>
 			<key>captures</key>

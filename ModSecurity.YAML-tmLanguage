@@ -44,8 +44,11 @@ patterns:
     '6': {name: string.quoted.modsecurity.action.ctl.parameter}
 
 - comment: Rule action - transform, e.g. t:base64Decode
-  name: keyword.operator.modsecurity.action.transform
-  match: '(?i)(^|,|\"|\s)t:(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecodeUni|urlDecode|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)'
+  name: complex.modsecurity.action.transform
+  match: '(?i)(^|,|\"|\s)(t:)(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecodeUni|urlDecode|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)'
+  captures:
+    '2': {name: keyword.operator.modsecurity.action.transform}
+    '3': {name: keyword.operator.modsecurity.action.transform.name}
 
 - comment: Rule action - with parameter
   name: complex.modsecurity.action.with_parameter
@@ -70,8 +73,10 @@ patterns:
     '2': {name: keyword.other.modsecurity.action}
 
 - comment: Rule action - without parameters
-  name: keyword.other.modsecurity.action
+  name: complex.modsecurity.action.without_parameter
   match: '(?i)(^|,|\"|\s)(allow|auditlog|block|capture|chain|deny|drop|log|multiMatch|noauditlog|nolog|pass)'
+  captures:
+    '2': {name: keyword.other.modsecurity.action}
 
 - comment: Regexp operator and operand, e.g. "@rx foo"
   name: complex.modsecurity.operator_operand.rx
