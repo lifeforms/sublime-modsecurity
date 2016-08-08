@@ -85,6 +85,12 @@ patterns:
   name: keyword.operator.modsecurity
   match: '(?i)@(beginsWith|contains|containsWord|detectSQLi|detectXSS|endsWith|fuzzyHash|eq|ge|geoLookup|gsbLookup|gt|inspectFile|ipMatch|ipMatchF|ipMatchFromFile|le|lt|pmf|pmFromFile|rbl|rsub|streq|strmatch|validateByteRange|validateDTD|validateHash|validateSchema|validateUrlEncoding|validateUtf8Encoding|verifyCC|verifyCPF|verifySSN|within)\b'
 
+- comment: Implicit regexp operator by double-quoted string, e.g. "foo"
+  name: complex.modsecurity.operator_operand.rx.implicit
+  match: '(?i)"[^@]([^"]*)'
+  captures:
+    '1': {name: string.regexp.modsecurity}
+
 - comment: Numbers, e.g. rule ids
   name: constant.numeric.modsecurity
   match: \b\d+(\.\d+)?
