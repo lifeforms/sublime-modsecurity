@@ -45,7 +45,7 @@
 			<key>comment</key>
 			<string>SecMarker directive</string>
 			<key>match</key>
-			<string>^\s*(SecMarker)\s+("([\w\s:\.\-_/]+)"|([\w\s:\.\-_/]+)|'([\w\s:\.\-_/]+)')\s*$</string>
+			<string>^\s*(SecMarker)\s+("([\w:\.\-_/]+)"|([\w:\.\-_/]+)|'([\w:\.\-_/]+)')\s*$</string>
 			<key>name</key>
 			<string>complex.modsecurity.secmarker</string>
 		</dict>
@@ -115,39 +115,23 @@
 					<key>name</key>
 					<string>constant.numeric.modsecurity.action.parameter</string>
 				</dict>
-			</dict>
-			<key>comment</key>
-			<string>Rule action - with simple number parameter</string>
-			<key>match</key>
-			<string>(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+))</string>
-			<key>name</key>
-			<string>complex.modsecurity.action.with_parameter.number</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.other.modsecurity.action</string>
-				</dict>
-				<key>4</key>
+				<key>6</key>
 				<dict>
 					<key>name</key>
 					<string>string.quoted.modsecurity.action_parameter</string>
 				</dict>
-				<key>5</key>
+				<key>7</key>
 				<dict>
 					<key>name</key>
 					<string>string.quoted.modsecurity.action_parameter</string>
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Rule action - with simple string parameter</string>
+			<string>Rule action - with parameter</string>
 			<key>match</key>
-			<string>(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))</string>
+			<string>(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))</string>
 			<key>name</key>
-			<string>complex.modsecurity.action.with_parameter.string</string>
+			<string>complex.modsecurity.action.with_parameter</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -159,7 +143,7 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Rule action - with other parameter</string>
+			<string>Rule action - with unrecognized parameter</string>
 			<key>match</key>
 			<string>(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):</string>
 			<key>name</key>

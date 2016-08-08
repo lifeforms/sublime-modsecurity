@@ -42,23 +42,17 @@ patterns:
   name: keyword.operator.modsecurity.action.transform
   match: '(^|,|\"|\s)t:(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecode|urlDecodeUni|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)'
 
-- comment: Rule action - with simple number parameter
-  name: complex.modsecurity.action.with_parameter.number
-  match: (^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+))
+- comment: Rule action - with parameter
+  name: complex.modsecurity.action.with_parameter
+  match: (^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))
   captures:
     '2': {name: keyword.other.modsecurity.action}
     '4': {name: constant.numeric.modsecurity.action.parameter}
     '5': {name: constant.numeric.modsecurity.action.parameter}
+    '6': {name: string.quoted.modsecurity.action_parameter}
+    '7': {name: string.quoted.modsecurity.action_parameter}
 
-- comment: Rule action - with simple string parameter
-  name: complex.modsecurity.action.with_parameter.string
-  match: (^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))
-  captures:
-    '2': {name: keyword.other.modsecurity.action}
-    '4': {name: string.quoted.modsecurity.action_parameter}
-    '5': {name: string.quoted.modsecurity.action_parameter}
-
-- comment: Rule action - with other parameter
+- comment: Rule action - with unrecognized parameter
   name: complex.modsecurity.action.with_parameter.other
   match: '(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):'
   captures:
@@ -93,4 +87,4 @@ patterns:
 - comment: severities
   name: constant.language.modsecurity.severity
   match: \b(CRITICAL|ERROR|WARNING|NOTICE)\b
-  # TODO: these are not matching in strings
+  # TODO: these are not matching inside strings
