@@ -45,7 +45,7 @@
 			<key>comment</key>
 			<string>ModSecurity directive</string>
 			<key>match</key>
-			<string>^\s*(SecAction|SecArgumentSeparator|SecAuditEngine|SecAuditLog|SecAuditLog2|SecAuditLogDirMode|SecAuditLogFormat|SecAuditLogFileMode|SecAuditLogParts|SecAuditLogRelevantStatus|SecAuditLogStorageDir|SecAuditLogType|SecCacheTransformations|SecChrootDir|SecCollectionTimeout|SecComponentSignature|SecConnEngine|SecContentInjection|SecCookieFormat|SecCookieV0Separator|SecDataDir|SecDebugLog|SecDebugLogLevel|SecDefaultAction|SecDisableBackendCompression|SecHashEngine|SecHashKey|SecHashParam|SecHashMethodRx|SecHashMethodPm|SecGeoLookupDb|SecGsbLookupDb|SecGuardianLog|SecHttpBlKey|SecInterceptOnError|SecMarker|SecPcreMatchLimit|SecPcreMatchLimitRecursion|SecPdfProtect|SecPdfProtectMethod|SecPdfProtectSecret|SecPdfProtectTimeout|SecPdfProtectTokenName|SecReadStateLimit|SecConnReadStateLimit|SecSensorId|SecWriteStateLimit|SecConnWriteStateLimit|SecRemoteRules|SecRemoteRulesFailAction|SecRequestBodyAccess|SecRequestBodyInMemoryLimit|SecRequestBodyLimit|SecRequestBodyNoFilesLimit|SecRequestBodyLimitAction|SecResponseBodyLimit|SecResponseBodyLimitAction|SecResponseBodyMimeType|SecResponseBodyMimeTypesClear|SecResponseBodyAccess|SecRule|SecRuleInheritance|SecRuleEngine|SecRulePerfTime|SecRuleRemoveById|SecRuleRemoveByMsg|SecRuleRemoveByTag|SecRuleScript|SecRuleUpdateActionById|SecRuleUpdateTargetById|SecRuleUpdateTargetByMsg|SecRuleUpdateTargetByTag|SecServerSignature|SecStatusEngine|SecStreamInBodyInspection|SecStreamOutBodyInspection|SecTmpDir|SecUnicodeMapFile|SecUnicodeCodePage|SecUploadDir|SecUploadFileLimit|SecUploadFileMode|SecUploadKeepFiles|SecWebAppId|SecXmlExternalEntity)\b</string>
+			<string>(?i)^\s*(SecAction|SecArgumentSeparator|SecAuditEngine|SecAuditLog|SecAuditLog2|SecAuditLogDirMode|SecAuditLogFormat|SecAuditLogFileMode|SecAuditLogParts|SecAuditLogRelevantStatus|SecAuditLogStorageDir|SecAuditLogType|SecCacheTransformations|SecChrootDir|SecCollectionTimeout|SecComponentSignature|SecConnEngine|SecContentInjection|SecCookieFormat|SecCookieV0Separator|SecDataDir|SecDebugLog|SecDebugLogLevel|SecDefaultAction|SecDisableBackendCompression|SecHashEngine|SecHashKey|SecHashParam|SecHashMethodRx|SecHashMethodPm|SecGeoLookupDb|SecGsbLookupDb|SecGuardianLog|SecHttpBlKey|SecInterceptOnError|SecMarker|SecPcreMatchLimit|SecPcreMatchLimitRecursion|SecPdfProtect|SecPdfProtectMethod|SecPdfProtectSecret|SecPdfProtectTimeout|SecPdfProtectTokenName|SecReadStateLimit|SecConnReadStateLimit|SecSensorId|SecWriteStateLimit|SecConnWriteStateLimit|SecRemoteRules|SecRemoteRulesFailAction|SecRequestBodyAccess|SecRequestBodyInMemoryLimit|SecRequestBodyLimit|SecRequestBodyNoFilesLimit|SecRequestBodyLimitAction|SecResponseBodyLimit|SecResponseBodyLimitAction|SecResponseBodyMimeType|SecResponseBodyMimeTypesClear|SecResponseBodyAccess|SecRule|SecRuleInheritance|SecRuleEngine|SecRulePerfTime|SecRuleRemoveById|SecRuleRemoveByMsg|SecRuleRemoveByTag|SecRuleScript|SecRuleUpdateActionById|SecRuleUpdateTargetById|SecRuleUpdateTargetByMsg|SecRuleUpdateTargetByTag|SecServerSignature|SecStatusEngine|SecStreamInBodyInspection|SecStreamOutBodyInspection|SecTmpDir|SecUnicodeMapFile|SecUnicodeCodePage|SecUploadDir|SecUploadFileLimit|SecUploadFileMode|SecUploadKeepFiles|SecWebAppId|SecXmlExternalEntity)\b</string>
 			<key>name</key>
 			<string>keyword.headers.modsecurity.directive</string>
 		</dict>
@@ -74,12 +74,35 @@
 			<string>keyword.macro.modsecurity</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.modsecurity.action.ctl</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.modsecurity.action.ctl.name</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.modsecurity.action.ctl.parameter</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.modsecurity.action.ctl.parameter</string>
+				</dict>
+			</dict>
 			<key>comment</key>
-			<string>Rule action - runtime configuration, e.g. ctl:auditLogParts</string>
+			<string>Rule action - runtime configuration, e.g. ctl:ruleEngine=DetectionOnly</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)ctl:(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)</string>
+			<string>(?i)(^|,|\"|\s)(ctl:)(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)=((\d+)|([\w\s:\.\-_/]+))</string>
 			<key>name</key>
-			<string>keyword.other.modsecurity.action.ctl</string>
+			<string>complex.modsecurity.action.ctl</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -100,12 +123,12 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>constant.numeric.modsecurity.action.parameter</string>
+					<string>constant.numeric.modsecurity.action_parameter</string>
 				</dict>
 				<key>5</key>
 				<dict>
 					<key>name</key>
-					<string>constant.numeric.modsecurity.action.parameter</string>
+					<string>constant.numeric.modsecurity.action_parameter</string>
 				</dict>
 				<key>6</key>
 				<dict>

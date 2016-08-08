@@ -22,7 +22,7 @@ patterns:
 
 - comment: ModSecurity directive
   name: keyword.headers.modsecurity.directive
-  match: '^\s*(SecAction|SecArgumentSeparator|SecAuditEngine|SecAuditLog|SecAuditLog2|SecAuditLogDirMode|SecAuditLogFormat|SecAuditLogFileMode|SecAuditLogParts|SecAuditLogRelevantStatus|SecAuditLogStorageDir|SecAuditLogType|SecCacheTransformations|SecChrootDir|SecCollectionTimeout|SecComponentSignature|SecConnEngine|SecContentInjection|SecCookieFormat|SecCookieV0Separator|SecDataDir|SecDebugLog|SecDebugLogLevel|SecDefaultAction|SecDisableBackendCompression|SecHashEngine|SecHashKey|SecHashParam|SecHashMethodRx|SecHashMethodPm|SecGeoLookupDb|SecGsbLookupDb|SecGuardianLog|SecHttpBlKey|SecInterceptOnError|SecMarker|SecPcreMatchLimit|SecPcreMatchLimitRecursion|SecPdfProtect|SecPdfProtectMethod|SecPdfProtectSecret|SecPdfProtectTimeout|SecPdfProtectTokenName|SecReadStateLimit|SecConnReadStateLimit|SecSensorId|SecWriteStateLimit|SecConnWriteStateLimit|SecRemoteRules|SecRemoteRulesFailAction|SecRequestBodyAccess|SecRequestBodyInMemoryLimit|SecRequestBodyLimit|SecRequestBodyNoFilesLimit|SecRequestBodyLimitAction|SecResponseBodyLimit|SecResponseBodyLimitAction|SecResponseBodyMimeType|SecResponseBodyMimeTypesClear|SecResponseBodyAccess|SecRule|SecRuleInheritance|SecRuleEngine|SecRulePerfTime|SecRuleRemoveById|SecRuleRemoveByMsg|SecRuleRemoveByTag|SecRuleScript|SecRuleUpdateActionById|SecRuleUpdateTargetById|SecRuleUpdateTargetByMsg|SecRuleUpdateTargetByTag|SecServerSignature|SecStatusEngine|SecStreamInBodyInspection|SecStreamOutBodyInspection|SecTmpDir|SecUnicodeMapFile|SecUnicodeCodePage|SecUploadDir|SecUploadFileLimit|SecUploadFileMode|SecUploadKeepFiles|SecWebAppId|SecXmlExternalEntity)\b'
+  match: '(?i)^\s*(SecAction|SecArgumentSeparator|SecAuditEngine|SecAuditLog|SecAuditLog2|SecAuditLogDirMode|SecAuditLogFormat|SecAuditLogFileMode|SecAuditLogParts|SecAuditLogRelevantStatus|SecAuditLogStorageDir|SecAuditLogType|SecCacheTransformations|SecChrootDir|SecCollectionTimeout|SecComponentSignature|SecConnEngine|SecContentInjection|SecCookieFormat|SecCookieV0Separator|SecDataDir|SecDebugLog|SecDebugLogLevel|SecDefaultAction|SecDisableBackendCompression|SecHashEngine|SecHashKey|SecHashParam|SecHashMethodRx|SecHashMethodPm|SecGeoLookupDb|SecGsbLookupDb|SecGuardianLog|SecHttpBlKey|SecInterceptOnError|SecMarker|SecPcreMatchLimit|SecPcreMatchLimitRecursion|SecPdfProtect|SecPdfProtectMethod|SecPdfProtectSecret|SecPdfProtectTimeout|SecPdfProtectTokenName|SecReadStateLimit|SecConnReadStateLimit|SecSensorId|SecWriteStateLimit|SecConnWriteStateLimit|SecRemoteRules|SecRemoteRulesFailAction|SecRequestBodyAccess|SecRequestBodyInMemoryLimit|SecRequestBodyLimit|SecRequestBodyNoFilesLimit|SecRequestBodyLimitAction|SecResponseBodyLimit|SecResponseBodyLimitAction|SecResponseBodyMimeType|SecResponseBodyMimeTypesClear|SecResponseBodyAccess|SecRule|SecRuleInheritance|SecRuleEngine|SecRulePerfTime|SecRuleRemoveById|SecRuleRemoveByMsg|SecRuleRemoveByTag|SecRuleScript|SecRuleUpdateActionById|SecRuleUpdateTargetById|SecRuleUpdateTargetByMsg|SecRuleUpdateTargetByTag|SecServerSignature|SecStatusEngine|SecStreamInBodyInspection|SecStreamOutBodyInspection|SecTmpDir|SecUnicodeMapFile|SecUnicodeCodePage|SecUploadDir|SecUploadFileLimit|SecUploadFileMode|SecUploadKeepFiles|SecWebAppId|SecXmlExternalEntity)\b'
 
 - comment: Bare variables, e.g. ARGS, TX:PARANOIA_LEVEL, XML:/*
   name: variable.parameter.modsecurity
@@ -34,9 +34,14 @@ patterns:
   captures:
     '1': {name: variable.parameter.modsecurity}
 
-- comment: Rule action - runtime configuration, e.g. ctl:auditLogParts
-  name: keyword.other.modsecurity.action.ctl
-  match: '(?i)(^|,|\"|\s)ctl:(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)'
+- comment: Rule action - runtime configuration, e.g. ctl:ruleEngine=DetectionOnly
+  name: complex.modsecurity.action.ctl
+  match: (?i)(^|,|\"|\s)(ctl:)(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)=((\d+)|([\w\s:\.\-_/]+))
+  captures:
+    '2': {name: keyword.other.modsecurity.action.ctl}
+    '3': {name: keyword.other.modsecurity.action.ctl.name}
+    '5': {name: constant.numeric.modsecurity.action.ctl.parameter}
+    '6': {name: string.quoted.modsecurity.action.ctl.parameter}
 
 - comment: Rule action - transform, e.g. t:base64Decode
   name: keyword.operator.modsecurity.action.transform
@@ -47,8 +52,8 @@ patterns:
   match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))
   captures:
     '2': {name: keyword.other.modsecurity.action}
-    '4': {name: constant.numeric.modsecurity.action.parameter}
-    '5': {name: constant.numeric.modsecurity.action.parameter}
+    '4': {name: constant.numeric.modsecurity.action_parameter}
+    '5': {name: constant.numeric.modsecurity.action_parameter}
     '6': {name: string.quoted.modsecurity.action_parameter}
     '7': {name: string.quoted.modsecurity.action_parameter}
 
