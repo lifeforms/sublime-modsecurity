@@ -115,7 +115,7 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>constant.other.modsecurity.action.transform_name</string>
+					<string>constant.language.modsecurity.action.transform_name</string>
 				</dict>
 			</dict>
 			<key>comment</key>
@@ -258,6 +258,14 @@
 			<string>(?i)"([^@][^"]*)</string>
 			<key>name</key>
 			<string>complex.modsecurity.operator_operand.rx.implicit</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>IP address/network</string>
+			<key>match</key>
+			<string>\b\d+\.\d+\.\d+\.\d+(/\d+)?\b</string>
+			<key>name</key>
+			<string>constant.other.modsecurity.ip</string>
 		</dict>
 		<dict>
 			<key>comment</key>

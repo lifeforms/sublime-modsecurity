@@ -48,7 +48,7 @@ patterns:
   match: '(?i)(^|,|\"|\s)(t):(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecodeUni|urlDecode|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)'
   captures:
     '2': {name: keyword.operator.modsecurity.action.transform}
-    '3': {name: constant.other.modsecurity.action.transform_name}
+    '3': {name: constant.language.modsecurity.action.transform_name}
 
 - comment: Rule action - with parameter
   name: complex.modsecurity.action.with_parameter
@@ -101,6 +101,10 @@ patterns:
   match: '(?i)"([^@][^"]*)'
   captures:
     '1': {name: string.regexp.modsecurity}
+
+- comment: IP address/network
+  name: constant.other.modsecurity.ip
+  match: \b\d+\.\d+\.\d+\.\d+(/\d+)?\b
 
 - comment: Numbers, e.g. rule ids
   name: constant.numeric.modsecurity
