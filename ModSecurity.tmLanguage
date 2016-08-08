@@ -131,6 +131,32 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
+					<string>keyword.operator.modsecurity.action.phase</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.modsecurity.action.phase_name</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.modsecurity.action.phase_name</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Rule action - phase, e.g. phase:request</string>
+			<key>match</key>
+			<string>(?i)(^|,|\"|\s)(phase):((response|request|1|2|3|4|5)|'(response|request|1|2|3|4|5)')</string>
+			<key>name</key>
+			<string>complex.modsecurity.action.phase</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
 					<string>keyword.other.modsecurity.action</string>
 				</dict>
 				<key>4</key>
@@ -157,7 +183,7 @@
 			<key>comment</key>
 			<string>Rule action - with parameter</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\)]+)'|([\w\s:\.\-_/\(\)]+))</string>
+			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\)]+)'|([\w\s:\.\-_/\(\)]+))</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.with_parameter</string>
 		</dict>

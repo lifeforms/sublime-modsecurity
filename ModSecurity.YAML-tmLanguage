@@ -50,9 +50,17 @@ patterns:
     '2': {name: keyword.operator.modsecurity.action.transform}
     '3': {name: constant.language.modsecurity.action.transform_name}
 
+- comment: Rule action - phase, e.g. phase:request
+  name: complex.modsecurity.action.phase
+  match: (?i)(^|,|\"|\s)(phase):((response|request|1|2|3|4|5)|'(response|request|1|2|3|4|5)')
+  captures:
+    '2': {name: keyword.operator.modsecurity.action.phase}
+    '4': {name: constant.language.modsecurity.action.phase_name}
+    '5': {name: constant.language.modsecurity.action.phase_name}
+
 - comment: Rule action - with parameter
   name: complex.modsecurity.action.with_parameter
-  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\)]+)'|([\w\s:\.\-_/\(\)]+))
+  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\)]+)'|([\w\s:\.\-_/\(\)]+))
   captures:
     '2': {name: keyword.other.modsecurity.action}
     '4': {name: constant.numeric.modsecurity.action_parameter}
