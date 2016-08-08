@@ -49,15 +49,21 @@ patterns:
 
 - comment: Rule action - with parameter
   name: complex.modsecurity.action.with_parameter
-  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))
+  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))
   captures:
     '2': {name: keyword.other.modsecurity.action}
     '4': {name: constant.numeric.modsecurity.action_parameter}
     '5': {name: constant.numeric.modsecurity.action_parameter}
     '6': {name: string.quoted.modsecurity.action_parameter}
     '7': {name: string.quoted.modsecurity.action_parameter}
+  # Note: 'setvar' removed from this match, since its contents start with a variable
+  # instead of a string; if we match it as a string then the variables inside it will not be
+  # syntax-colored. Example of this behavior:
+  # setvar:'tx.msg=%{rule.msg}',\
+  # setvar:tx.anomaly_score=+%{tx.critical_anomaly_score},\
+  # setvar:tx.%{rule.id}-OWASP_CRS/PROTOCOL_VIOLATION/EVASION-%{matched_var_name}=%{matched_var}"
 
-- comment: Rule action - with unrecognized parameter
+- comment: Rule action - with unmatched parameter
   name: complex.modsecurity.action.with_parameter.other
   match: '(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):'
   captures:
