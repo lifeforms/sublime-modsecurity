@@ -9,15 +9,16 @@ patterns:
 
 - comment: Comment, e.g. "# ..."
   name: comment.modsecurity
-  match: '#.*'
+  match: '^\s*#.*'
 
-- comment: SecMarker directive - with simple string parameter
+- comment: SecMarker directive
   name: complex.modsecurity.secmarker
-  match: ^\s*(SecMarker)\s+("([\w\s:\.\-_/]+)"|([\w\s:\.\-_/]+))
+  match: ^\s*(SecMarker)\s+("([\w\s:\.\-_/]+)"|([\w\s:\.\-_/]+)|('[\w\s:\.\-_/]+'))
   captures:
     '1': {name: keyword.other.modsecurity.directive}
     '3': {name: string.quoted.modsecurity.marker}
     '4': {name: string.quoted.modsecurity.marker}
+    '5': {name: invalid.illegal.modsecurity}
 
 - comment: Directives
   name: keyword.other.modsecurity.directive

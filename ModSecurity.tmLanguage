@@ -14,7 +14,7 @@
 			<key>comment</key>
 			<string>Comment, e.g. "# ..."</string>
 			<key>match</key>
-			<string>#.*</string>
+			<string>^\s*#.*</string>
 			<key>name</key>
 			<string>comment.modsecurity</string>
 		</dict>
@@ -36,11 +36,16 @@
 					<key>name</key>
 					<string>string.quoted.modsecurity.marker</string>
 				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>invalid.illegal.modsecurity</string>
+				</dict>
 			</dict>
 			<key>comment</key>
-			<string>SecMarker directive - with simple string parameter</string>
+			<string>SecMarker directive</string>
 			<key>match</key>
-			<string>^\s*(SecMarker)\s+("([\w\s:\.\-_/]+)"|([\w\s:\.\-_/]+))</string>
+			<string>^\s*(SecMarker)\s+("([\w\s:\.\-_/]+)"|([\w\s:\.\-_/]+)|('[\w\s:\.\-_/]+'))</string>
 			<key>name</key>
 			<string>complex.modsecurity.secmarker</string>
 		</dict>
