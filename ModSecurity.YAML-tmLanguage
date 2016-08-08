@@ -80,7 +80,7 @@ patterns:
   # setvar:tx.anomaly_score=+%{tx.critical_anomaly_score},\
   # setvar:tx.%{rule.id}-OWASP_CRS/PROTOCOL_VIOLATION/EVASION-%{matched_var_name}=%{matched_var}"
 
-- comment: Rule action - with unmatched parameter
+- comment: Rule action - with parameter not yet entered, or unmatched (e.g. setvar with macros)
   name: complex.modsecurity.action.with_parameter.other
   match: '(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):'
   captures:
