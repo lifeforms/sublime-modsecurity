@@ -45,10 +45,10 @@ patterns:
 
 - comment: Rule action - transform, e.g. t:base64Decode
   name: complex.modsecurity.action.transform
-  match: '(?i)(^|,|\"|\s)(t:)(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecodeUni|urlDecode|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)'
+  match: '(?i)(^|,|\"|\s)(t):(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecodeUni|urlDecode|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)'
   captures:
     '2': {name: keyword.operator.modsecurity.action.transform}
-    '3': {name: keyword.operator.modsecurity.action.transform.name}
+    '3': {name: constant.other.modsecurity.action.transform_name}
 
 - comment: Rule action - with parameter
   name: complex.modsecurity.action.with_parameter
