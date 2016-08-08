@@ -77,7 +77,7 @@
 			<key>comment</key>
 			<string>Rule action - runtime configuration, e.g. ctl:auditLogParts</string>
 			<key>match</key>
-			<string>(^|,|\"|\s)ctl:(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)</string>
+			<string>(?i)(^|,|\"|\s)ctl:(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)</string>
 			<key>name</key>
 			<string>keyword.other.modsecurity.action.ctl</string>
 		</dict>
@@ -85,7 +85,7 @@
 			<key>comment</key>
 			<string>Rule action - transform, e.g. t:base64Decode</string>
 			<key>match</key>
-			<string>(^|,|\"|\s)t:(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecodeUni|urlDecode|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)</string>
+			<string>(?i)(^|,|\"|\s)t:(base64Decode|sqlHexDecode|base64DecodeExt|base64Encode|cmdLine|compressWhitespace|cssDecode|escapeSeqDecode|hexDecode|hexEncode|htmlEntityDecode|jsDecode|length|lowercase|md5|none|normalisePath|normalisePathWin|parityEven7bit|parityOdd7bit|parityZero7bit|removeNulls|removeWhitespace|replaceComments|removeCommentsChar|removeComments|replaceNulls|urlDecodeUni|urlDecode|urlEncode|utf8toUnicode|sha1|trimLeft|trimRight|trim)</string>
 			<key>name</key>
 			<string>keyword.operator.modsecurity.action.transform</string>
 		</dict>
@@ -121,7 +121,7 @@
 			<key>comment</key>
 			<string>Rule action - with parameter</string>
 			<key>match</key>
-			<string>(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))</string>
+			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.with_parameter</string>
 		</dict>
@@ -137,7 +137,7 @@
 			<key>comment</key>
 			<string>Rule action - with unrecognized parameter</string>
 			<key>match</key>
-			<string>(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):</string>
+			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.with_parameter.other</string>
 		</dict>
@@ -145,7 +145,7 @@
 			<key>comment</key>
 			<string>Rule action - without parameters</string>
 			<key>match</key>
-			<string>(^|,|\"|\s)(allow|auditlog|block|capture|chain|deny|drop|log|multiMatch|noauditlog|nolog|pass)</string>
+			<string>(?i)(^|,|\"|\s)(allow|auditlog|block|capture|chain|deny|drop|log|multiMatch|noauditlog|nolog|pass)</string>
 			<key>name</key>
 			<string>keyword.other.modsecurity.action</string>
 		</dict>
@@ -166,7 +166,7 @@
 			<key>comment</key>
 			<string>Regexp operator and operand, e.g. "@rx foo"</string>
 			<key>match</key>
-			<string>"(@rx)\s+([^"]*)</string>
+			<string>(?i)"(@rx)\s+([^"]*)</string>
 			<key>name</key>
 			<string>complex.modsecurity.operator_operand.rx</string>
 		</dict>
@@ -187,7 +187,7 @@
 			<key>comment</key>
 			<string>pm operator and operand, e.g. "@pm foo"</string>
 			<key>match</key>
-			<string>"(@pm)\s+([^"]*)</string>
+			<string>(?i)"(@pm)\s+([^"]*)</string>
 			<key>name</key>
 			<string>complex.modsecurity.operator_operand.pm</string>
 		</dict>
@@ -195,7 +195,7 @@
 			<key>comment</key>
 			<string>Operator, e.g. @contains</string>
 			<key>match</key>
-			<string>@(beginsWith|contains|containsWord|detectSQLi|detectXSS|endsWith|fuzzyHash|eq|ge|geoLookup|gsbLookup|gt|inspectFile|ipMatch|ipMatchF|ipMatchFromFile|le|lt|pmf|pmFromFile|rbl|rsub|streq|strmatch|validateByteRange|validateDTD|validateHash|validateSchema|validateUrlEncoding|validateUtf8Encoding|verifyCC|verifyCPF|verifySSN|within)\b</string>
+			<string>(?i)@(beginsWith|contains|containsWord|detectSQLi|detectXSS|endsWith|fuzzyHash|eq|ge|geoLookup|gsbLookup|gt|inspectFile|ipMatch|ipMatchF|ipMatchFromFile|le|lt|pmf|pmFromFile|rbl|rsub|streq|strmatch|validateByteRange|validateDTD|validateHash|validateSchema|validateUrlEncoding|validateUtf8Encoding|verifyCC|verifyCPF|verifySSN|within)\b</string>
 			<key>name</key>
 			<string>keyword.operator.modsecurity</string>
 		</dict>
