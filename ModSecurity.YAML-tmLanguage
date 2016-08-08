@@ -57,9 +57,16 @@ patterns:
     '2': {name: keyword.operator.modsecurity.action.phase}
     '3': {name: constant.language.modsecurity.action.phase_name}
 
+- comment: Rule action - severity, e.g. severity:WARNING
+  name: complex.modsecurity.action.severity
+  match: (?i)(^|,|\"|\s)(severity):'?(NOTICE|WARNING|ERROR|CRITICAL|1|2|3|4|5)'?
+  captures:
+    '2': {name: keyword.operator.modsecurity.action.severity}
+    '3': {name: constant.language.modsecurity.action.severity_name}
+
 - comment: Rule action - with parameter
   name: complex.modsecurity.action.with_parameter
-  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\)]+)'|([\w\s:\.\-_/\(\)]+))
+  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\)]+)'|([\w\s:\.\-_/\(\)]+))
   captures:
     '2': {name: keyword.other.modsecurity.action}
     '4': {name: constant.numeric.modsecurity.action_parameter}
@@ -116,12 +123,6 @@ patterns:
 - comment: Numbers, e.g. rule ids
   name: constant.numeric.modsecurity
   match: \b\d+(\.\d+)?
-
-- comment: severities
-  name: constant.language.modsecurity.severity
-  match: \b(CRITICAL|ERROR|WARNING|NOTICE)\b
-  # TODO: these are not matching inside strings
-
 
 
 ####
