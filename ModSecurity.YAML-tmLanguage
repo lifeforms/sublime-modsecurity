@@ -86,7 +86,7 @@ patterns:
   captures:
     '2': {name: keyword.other.modsecurity.action}
 
-- comment: Rule action - with parameter not yet entered, or unmatched (e.g. setvar with macros)
+- comment: Rule action - with parameter - disruptive actions
   name: complex.modsecurity.action.with_parameter.disruptive
   match: '(?i)(^|,|\"|\s)(proxy|redirect):'
   captures:
@@ -94,13 +94,13 @@ patterns:
 
 - comment: Rule action - without parameters - disruptive actions, pass, capture, and chain
   name: complex.modsecurity.action.without_parameter.disruptive_pass
-  match: '(?i)(^|,|\"|\s)(allow|block|deny|drop|pass|capture|chain)'
+  match: '(?i)(^|,|\"|\s)(allow|block|deny|drop|pass|capture|chain)\b[^:]'
   captures:
     '2': {name: entity.name.function.modsecurity.action.disruptive_pass}
 
 - comment: Rule action - without parameters
   name: complex.modsecurity.action.without_parameter
-  match: '(?i)(^|,|\"|\s)(auditlog|log|multiMatch|noauditlog|nolog)'
+  match: '(?i)(^|,|\"|\s)(auditlog|log|multiMatch|noauditlog|nolog)\b[^:]'
   captures:
     '2': {name: keyword.other.modsecurity.action}
 

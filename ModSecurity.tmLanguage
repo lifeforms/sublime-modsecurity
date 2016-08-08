@@ -229,7 +229,7 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>Rule action - with parameter not yet entered, or unmatched (e.g. setvar with macros)</string>
+			<string>Rule action - with parameter - disruptive actions</string>
 			<key>match</key>
 			<string>(?i)(^|,|\"|\s)(proxy|redirect):</string>
 			<key>name</key>
@@ -247,7 +247,7 @@
 			<key>comment</key>
 			<string>Rule action - without parameters - disruptive actions, pass, capture, and chain</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)(allow|block|deny|drop|pass|capture|chain)</string>
+			<string>(?i)(^|,|\"|\s)(allow|block|deny|drop|pass|capture|chain)\b[^:]</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.without_parameter.disruptive_pass</string>
 		</dict>
@@ -263,7 +263,7 @@
 			<key>comment</key>
 			<string>Rule action - without parameters</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)(auditlog|log|multiMatch|noauditlog|nolog)</string>
+			<string>(?i)(^|,|\"|\s)(auditlog|log|multiMatch|noauditlog|nolog)\b[^:]</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.without_parameter</string>
 		</dict>
