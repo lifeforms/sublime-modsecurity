@@ -52,11 +52,10 @@ patterns:
 
 - comment: Rule action - phase, e.g. phase:request
   name: complex.modsecurity.action.phase
-  match: (?i)(^|,|\"|\s)(phase):((response|request|1|2|3|4|5)|'(response|request|1|2|3|4|5)')
+  match: (?i)(^|,|\"|\s)(phase):'?(response|request|1|2|3|4|5)'?
   captures:
     '2': {name: keyword.operator.modsecurity.action.phase}
-    '4': {name: constant.language.modsecurity.action.phase_name}
-    '5': {name: constant.language.modsecurity.action.phase_name}
+    '3': {name: constant.language.modsecurity.action.phase_name}
 
 - comment: Rule action - with parameter
   name: complex.modsecurity.action.with_parameter

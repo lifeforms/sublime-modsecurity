@@ -133,12 +133,7 @@
 					<key>name</key>
 					<string>keyword.operator.modsecurity.action.phase</string>
 				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>constant.language.modsecurity.action.phase_name</string>
-				</dict>
-				<key>5</key>
+				<key>3</key>
 				<dict>
 					<key>name</key>
 					<string>constant.language.modsecurity.action.phase_name</string>
@@ -147,7 +142,7 @@
 			<key>comment</key>
 			<string>Rule action - phase, e.g. phase:request</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)(phase):((response|request|1|2|3|4|5)|'(response|request|1|2|3|4|5)')</string>
+			<string>(?i)(^|,|\"|\s)(phase):'?(response|request|1|2|3|4|5)'?</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.phase</string>
 		</dict>
