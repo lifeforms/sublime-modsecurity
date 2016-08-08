@@ -199,7 +199,7 @@
 			<key>comment</key>
 			<string>Rule action - with parameter</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\),]+)'|([\w\s:\.\-_/\(\)]+))</string>
+			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|prepend|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\),]+)'|([\w\s:\.\-_/\(\)]+))</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.with_parameter</string>
 		</dict>
@@ -215,9 +215,41 @@
 			<key>comment</key>
 			<string>Rule action - with parameter not yet entered, or unmatched (e.g. setvar with macros)</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):</string>
+			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|ev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.with_parameter.other</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.modsecurity.action.disruptive_pass</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Rule action - with parameter not yet entered, or unmatched (e.g. setvar with macros)</string>
+			<key>match</key>
+			<string>(?i)(^|,|\"|\s)(proxy|redirect):</string>
+			<key>name</key>
+			<string>complex.modsecurity.action.with_parameter.disruptive</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.modsecurity.action.disruptive_pass</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Rule action - without parameters - disruptive actions, pass, capture, and chain</string>
+			<key>match</key>
+			<string>(?i)(^|,|\"|\s)(allow|block|deny|drop|pass|capture|chain)</string>
+			<key>name</key>
+			<string>complex.modsecurity.action.without_parameter.disruptive_pass</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -231,7 +263,7 @@
 			<key>comment</key>
 			<string>Rule action - without parameters</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)(allow|auditlog|block|capture|chain|deny|drop|log|multiMatch|noauditlog|nolog|pass)</string>
+			<string>(?i)(^|,|\"|\s)(auditlog|log|multiMatch|noauditlog|nolog)</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.without_parameter</string>
 		</dict>

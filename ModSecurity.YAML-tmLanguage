@@ -66,7 +66,7 @@ patterns:
 
 - comment: Rule action - with parameter
   name: complex.modsecurity.action.with_parameter
-  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\),]+)'|([\w\s:\.\-_/\(\)]+))
+  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|prepend|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\),]+)'|([\w\s:\.\-_/\(\)]+))
   captures:
     '2': {name: keyword.other.modsecurity.action}
     '4': {name: constant.numeric.modsecurity.action_parameter}
@@ -82,13 +82,25 @@ patterns:
 
 - comment: Rule action - with parameter not yet entered, or unmatched (e.g. setvar with macros)
   name: complex.modsecurity.action.with_parameter.other
-  match: '(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):'
+  match: '(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|ev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|setvar|skip|skipAfter|status|tag|ver|xmlns):'
   captures:
     '2': {name: keyword.other.modsecurity.action}
 
+- comment: Rule action - with parameter not yet entered, or unmatched (e.g. setvar with macros)
+  name: complex.modsecurity.action.with_parameter.disruptive
+  match: '(?i)(^|,|\"|\s)(proxy|redirect):'
+  captures:
+    '2': {name: entity.name.function.modsecurity.action.disruptive_pass}
+
+- comment: Rule action - without parameters - disruptive actions, pass, capture, and chain
+  name: complex.modsecurity.action.without_parameter.disruptive_pass
+  match: '(?i)(^|,|\"|\s)(allow|block|deny|drop|pass|capture|chain)'
+  captures:
+    '2': {name: entity.name.function.modsecurity.action.disruptive_pass}
+
 - comment: Rule action - without parameters
   name: complex.modsecurity.action.without_parameter
-  match: '(?i)(^|,|\"|\s)(allow|auditlog|block|capture|chain|deny|drop|log|multiMatch|noauditlog|nolog|pass)'
+  match: '(?i)(^|,|\"|\s)(auditlog|log|multiMatch|noauditlog|nolog)'
   captures:
     '2': {name: keyword.other.modsecurity.action}
 
