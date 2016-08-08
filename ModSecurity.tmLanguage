@@ -157,7 +157,7 @@
 			<key>comment</key>
 			<string>Rule action - with parameter</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))</string>
+			<string>(?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\)]+)'|([\w\s:\.\-_/\(\)]+))</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.with_parameter</string>
 		</dict>

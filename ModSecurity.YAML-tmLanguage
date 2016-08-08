@@ -52,7 +52,7 @@ patterns:
 
 - comment: Rule action - with parameter
   name: complex.modsecurity.action.with_parameter
-  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/]+)'|([\w\s:\.\-_/]+))
+  match: (?i)(^|,|\"|\s)(accuracy|append|deprecatevar|exec|expirevar|id|initcol|logdata|maturity|msg|pause|phase|prepend|proxy|redirect|rev|sanitiseArg|sanitiseMatched|sanitiseMatchedBytes|sanitiseRequestHeader|sanitiseResponseHeader|severity|setuid|setrsc|setsid|setenv|skip|skipAfter|status|tag|ver|xmlns):('(\d+)'|(\d+)|'([\w\s:\.\-_/\(\)]+)'|([\w\s:\.\-_/\(\)]+))
   captures:
     '2': {name: keyword.other.modsecurity.action}
     '4': {name: constant.numeric.modsecurity.action_parameter}
