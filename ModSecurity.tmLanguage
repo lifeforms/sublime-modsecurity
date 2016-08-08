@@ -234,7 +234,7 @@
 			<key>comment</key>
 			<string>Implicit regexp operator by double-quoted string, e.g. "foo"</string>
 			<key>match</key>
-			<string>(?i)"[^@]([^"]*)</string>
+			<string>(?i)"([^@][^"]*)</string>
 			<key>name</key>
 			<string>complex.modsecurity.operator_operand.rx.implicit</string>
 		</dict>

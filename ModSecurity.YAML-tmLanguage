@@ -87,7 +87,7 @@ patterns:
 
 - comment: Implicit regexp operator by double-quoted string, e.g. "foo"
   name: complex.modsecurity.operator_operand.rx.implicit
-  match: '(?i)"[^@]([^"]*)'
+  match: '(?i)"([^@][^"]*)'
   captures:
     '1': {name: string.regexp.modsecurity}
 
