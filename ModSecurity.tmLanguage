@@ -100,7 +100,7 @@
 			<key>comment</key>
 			<string>Rule action - runtime configuration, e.g. ctl:ruleEngine=DetectionOnly</string>
 			<key>match</key>
-			<string>(?i)(^|,|\"|\s)(ctl:)(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)=((\d+)|([\w\s:\.\-_/]+))</string>
+			<string>(?i)(^|,|\"|\s)(ctl:)(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)=((\d+)|([\w\s:\.\-_/+]+))</string>
 			<key>name</key>
 			<string>complex.modsecurity.action.ctl</string>
 		</dict>

@@ -36,7 +36,7 @@ patterns:
 
 - comment: Rule action - runtime configuration, e.g. ctl:ruleEngine=DetectionOnly
   name: complex.modsecurity.action.ctl
-  match: (?i)(^|,|\"|\s)(ctl:)(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)=((\d+)|([\w\s:\.\-_/]+))
+  match: (?i)(^|,|\"|\s)(ctl:)(auditEngine|auditLogParts|debugLogLevel|forceRequestBodyVariable|requestBodyAccess|requestBodyLimit|requestBodyProcessor|responseBodyAccess|responseBodyLimit|ruleEngine|ruleRemoveById|ruleRemoveByMsg|ruleRemoveByTag|ruleRemoveTargetById|ruleRemoveTargetByMsg|ruleRemoveTargetByTag|hashEngine|hashEnforcement)=((\d+)|([\w\s:\.\-_/+]+))
   captures:
     '2': {name: keyword.other.modsecurity.action.ctl}
     '3': {name: keyword.other.modsecurity.action.ctl.name}
