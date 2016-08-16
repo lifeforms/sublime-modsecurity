@@ -94,13 +94,13 @@ patterns:
 
 - comment: Rule action - without parameters - disruptive actions, pass, capture, and chain
   name: complex.modsecurity.action.without_parameter.disruptive_pass
-  match: '(?i)(^|,|\"|\s)(allow|block|deny|drop|pass|capture|chain)\b[^:]'
+  match: '(?i)(^|,|\"|\s)(allow|block|deny|drop|pass|chain)\b'
   captures:
     '2': {name: entity.name.function.modsecurity.action.disruptive_pass}
 
 - comment: Rule action - without parameters
   name: complex.modsecurity.action.without_parameter
-  match: '(?i)(^|,|\"|\s)(auditlog|log|multiMatch|noauditlog|nolog)\b[^:]'
+  match: '(?i)(^|,|\"|\s)(auditlog|capture|log|multiMatch|noauditlog|nolog)\b'
   captures:
     '2': {name: keyword.other.modsecurity.action}
 
