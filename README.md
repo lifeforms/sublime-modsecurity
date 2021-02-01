@@ -2,7 +2,7 @@
 
 ## Notes
 
-A nice [ModSecurity Visual Studio extension](https://marketplace.visualstudio.com/items?itemName=irvinlim.language-modsecurity) based on this work was made by Irvin Lim.
+A nice [VS Code ModSecurity extension](https://marketplace.visualstudio.com/items?itemName=irvinlim.language-modsecurity) based on this work was made by Irvin Lim.
 
 ## Instructions
 
