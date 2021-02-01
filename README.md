@@ -1,5 +1,9 @@
 # ModSecurity rule syntax for [Sublime Text](https://www.sublimetext.com)
 
+## Notes
+
+A nice [ModSecurity Visual Studio extension](https://marketplace.visualstudio.com/items?itemName=irvinlim.language-modsecurity) based on this work was made by Irvin Lim.
+
 ## Instructions
 
 1. Get [ModSecurity.tmLanguage](https://raw.githubusercontent.com/lifeforms/sublime-modsecurity/master/ModSecurity.tmLanguage)
